@@ -1,7 +1,9 @@
 {
   "versionCode": 4,
   "versionName": "1.0.4",
-  "releaseDate": "2026-08-01",
+  "releaseDate": "2026-08-07",
   "apkUrl": "https://github.com/grit-pos/sparkling/releases/latest/download/HandTerminal.apk",
-  "releaseNotes": "스파클링 핸드터미널 최신 업데이트입니다."
+  "releaseNotes": [
+    "스파클링 핸드터미널 최신 업데이트입니다."
+  ]
 }
