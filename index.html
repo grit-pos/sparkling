@@ -2,146 +2,719 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <title>검품업무 공식 업데이트</title>
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no">
+
+    <title>검품업무 업데이트 안내</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
+        html,
         body {
-            margin: 0;
-            padding: 24px 16px;
-            background-color: #f4f6f8;
-            color: #222222;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         "Noto Sans KR", Arial, sans-serif;
-        }
-
-        .container {
             width: 100%;
-            max-width: 520px;
-            margin: 0 auto;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
-        .card {
-            padding: 28px 22px;
+        body {
             background-color: #ffffff;
-            border: 1px solid #e1e5e9;
-            border-radius: 14px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            color: #292A2D;
+            font-family:
+                Pretendard,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                "Noto Sans KR",
+                Arial,
+                sans-serif;
+
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .badge {
-            display: inline-block;
-            margin-bottom: 14px;
-            padding: 6px 10px;
-            background-color: #eaf2ff;
-            color: #175cd3;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
+        button,
+        a {
+            font-family: inherit;
         }
 
-        h1 {
-            margin: 0 0 14px;
-            font-size: 25px;
-            line-height: 1.4;
+        .update-container {
+            display: flex;
+            width: 100%;
+            min-height: 100%;
+            padding: 24px 16px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 26.67px;
+
+            background-color: #ffffff;
+            overflow: hidden;
+
+            box-shadow:
+                0 2.67px 5.33px rgba(0, 0, 0, 0.08),
+                0 0 1.33px rgba(0, 0, 0, 0.05);
         }
 
-        .description {
-            margin: 0 0 24px;
-            color: #555555;
+        /* =========================
+           상단 제목 및 닫기 버튼
+           ========================= */
+
+        .update-header {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .update-title {
+            min-width: 0;
+            margin: 0;
+
+            color: #292A2D;
+            font-size: 27px;
+            font-weight: 600;
+            line-height: 40.5px;
+
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .close-button {
+            display: flex;
+            width: 54px;
+            height: 54px;
+            padding: 0;
+            flex: 0 0 54px;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .close-button:active {
+            opacity: 0.55;
+        }
+
+        .close-icon {
+            display: block;
+            width: 32.4px;
+            height: 32.4px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           본문
+           ========================= */
+
+        .update-content {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 26.67px;
+        }
+
+        .release-section {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 16px;
+        }
+
+        /* 버전 날짜 영역 */
+
+        .release-header {
+            display: flex;
+            width: 100%;
+            min-height: 43px;
+            padding: 8px 16px;
+
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            background-color: #E9EEFF;
+            border-radius: 666px;
+            overflow: hidden;
+        }
+
+        .release-month {
+            min-width: 0;
+
+            color: #292A2D;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 27px;
+            text-align: center;
+
+            white-space: nowrap;
+            word-break: keep-all;
+        }
+
+        .release-date {
+            flex-shrink: 0;
+
+            color: #878A93;
             font-size: 16px;
-            line-height: 1.7;
+            font-weight: 500;
+            line-height: 24px;
+            text-align: center;
+
+            white-space: nowrap;
         }
 
-        .version-box {
-            margin-bottom: 22px;
-            padding: 16px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            line-height: 1.8;
+        /* 릴리즈 노트 */
+
+        .release-notes {
+            display: flex;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 5.33px;
+
+            list-style: none;
         }
 
-        .label {
-            color: #666666;
+        .release-note-item {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+            color: #5A5C63;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 27px;
+
+            word-break: keep-all;
+            overflow-wrap: break-word;
         }
+
+        .release-divider {
+            width: 100%;
+            height: 1px;
+            margin: 0;
+
+            border: 0;
+            background-color: #E1E2E4;
+        }
+
+        /* 고객센터 */
+
+        .customer-center {
+            width: 100%;
+            margin: 0;
+
+            color: #878A93;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            text-align: center;
+
+            word-break: keep-all;
+        }
+
+        /* 다운로드 버튼 */
 
         .download-button {
-            display: block;
+            display: flex;
             width: 100%;
-            padding: 15px 18px;
-            background-color: #175cd3;
+            min-height: 62px;
+            padding: 16px;
+
+            align-items: center;
+            justify-content: center;
+            gap: 5.33px;
+
+            background-color: #495CF0;
             color: #ffffff;
-            border-radius: 9px;
-            font-size: 17px;
-            font-weight: bold;
+
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 30px;
             text-align: center;
             text-decoration: none;
+
+            word-break: keep-all;
+            overflow-wrap: break-word;
+
+            cursor: pointer;
         }
 
         .download-button:active {
-            background-color: #124aab;
+            background-color: #3E4FD4;
         }
 
-        .notice {
-            margin: 20px 2px 0;
-            color: #666666;
-            font-size: 14px;
-            line-height: 1.6;
+        .download-button.disabled {
+            pointer-events: none;
+            background-color: #B8BEF8;
         }
 
-        footer {
-            margin-top: 22px;
-            color: #777777;
-            font-size: 13px;
+        /* version.json 조회 오류 */
+
+        .error-message {
+            display: none;
+            width: 100%;
+            margin: 0;
+
+            color: #D94638;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 22px;
             text-align: center;
+        }
+
+        /*
+         * 너비가 좁은 단말에서도
+         * 날짜와 제목이 겹치지 않도록 최소 대응
+         */
+        @media (max-width: 390px) {
+            .update-title {
+                font-size: 24px;
+                line-height: 36px;
+            }
+
+            .close-button {
+                width: 48px;
+                height: 48px;
+                flex-basis: 48px;
+            }
+
+            .close-icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            .release-header {
+                padding-right: 14px;
+                padding-left: 14px;
+            }
+
+            .release-month {
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            .release-date {
+                font-size: 15px;
+                line-height: 22px;
+            }
+
+            .release-note-item {
+                font-size: 17px;
+                line-height: 25.5px;
+            }
+
+            .download-button {
+                font-size: 18px;
+                line-height: 27px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <main class="container">
-        <section class="card">
-            <div class="badge">공식 배포 페이지</div>
 
-            <h1>검품업무 공식 업데이트</h1>
+<main class="update-container">
 
-            <p class="description">
-                스파클링 검품업무의 공식 업데이트를
-                지원합니다.
-            </p>
+    <!-- 상단 제목 및 닫기 -->
+    <header class="update-header">
 
-            <div class="version-box">
-                <div>
-                    <span class="label">최신 버전:</span>
-                    <strong>1.0.4</strong>
+        <h1 class="update-title">
+            검품업무 업데이트 안내
+        </h1>
+
+        <button
+            type="button"
+            class="close-button"
+            aria-label="업데이트 안내 닫기"
+            onclick="closeUpdateDialog()">
+
+            <img
+                src="./images/ic_close.svg"
+                class="close-icon"
+                alt="">
+        </button>
+
+    </header>
+
+    <!-- 본문 -->
+    <section class="update-content">
+
+        <section class="release-section">
+
+            <!-- 배포 월 및 배포일 -->
+            <div class="release-header">
+
+                <div
+                    id="releaseMonth"
+                    class="release-month">
+
+                    업데이트 정보 확인 중
                 </div>
 
-                <div>
-                    <span class="label">배포일:</span>
-                    2026년 7월 30일
+                <div
+                    id="releaseDate"
+                    class="release-date">
+
+                    -
                 </div>
+
             </div>
 
-            <a class="download-button"
-               href="https://github.com/grit-pos/sparkling/releases/latest/download/HandTerminal.apk">
-                최신 버전 다운로드
-            </a>
+            <!-- 릴리즈 노트 -->
+            <ul
+                id="releaseNotes"
+                class="release-notes">
+            </ul>
 
-            <p class="notice">
-                다운로드가 완료되면 설치 화면이 표시됩니다.
-                설치 전에 현재 작업 중인 내용을 저장해 주세요.
-            </p>
+            <hr class="release-divider">
+
         </section>
 
-        <footer>
-            운영 및 배포: GRIT POS
-        </footer>
-    </main>
+        <p class="customer-center">
+            고객센터: 031-979-3316
+        </p>
+
+        <a
+            id="downloadButton"
+            class="download-button disabled"
+            href="#"
+            aria-disabled="true">
+
+            최신 버전 확인 중
+        </a>
+
+        <p
+            id="errorMessage"
+            class="error-message">
+
+            업데이트 정보를 불러오지 못했습니다.
+        </p>
+
+    </section>
+
+</main>
+
+<script>
+    (function () {
+        "use strict";
+
+        var releaseMonthElement =
+                document.getElementById("releaseMonth");
+
+        var releaseDateElement =
+                document.getElementById("releaseDate");
+
+        var releaseNotesElement =
+                document.getElementById("releaseNotes");
+
+        var downloadButton =
+                document.getElementById("downloadButton");
+
+        var errorMessageElement =
+                document.getElementById("errorMessage");
+
+        /*
+         * releaseDate 예:
+         * 2026-08-07
+         *
+         * 결과:
+         * 2026년 8월 업데이트
+         */
+        function formatReleaseMonth(releaseDate) {
+
+            var dateParts =
+                    parseReleaseDate(releaseDate);
+
+            if (dateParts === null) {
+                return "업데이트 안내";
+            }
+
+            return dateParts.year
+                    + "년 "
+                    + dateParts.monthNumber
+                    + "월 업데이트";
+        }
+
+        /*
+         * releaseDate 예:
+         * 2026-08-07
+         *
+         * 결과:
+         * 2026/08/07
+         *
+         * Date 객체를 사용하지 않고 문자열로 처리하여
+         * WebView 시간대 차이로 날짜가 변경되는 것을 방지한다.
+         */
+        function formatReleaseDate(releaseDate) {
+
+            var dateParts =
+                    parseReleaseDate(releaseDate);
+
+            if (dateParts === null) {
+                return "-";
+            }
+
+            return dateParts.year
+                    + "/"
+                    + dateParts.month
+                    + "/"
+                    + dateParts.day;
+        }
+
+        function parseReleaseDate(releaseDate) {
+
+            if (typeof releaseDate !== "string") {
+                return null;
+            }
+
+            var dateParts =
+                    releaseDate.trim().split("-");
+
+            if (dateParts.length !== 3) {
+                return null;
+            }
+
+            var year =
+                    dateParts[0];
+
+            var month =
+                    dateParts[1];
+
+            var day =
+                    dateParts[2];
+
+            var monthNumber =
+                    parseInt(month, 10);
+
+            if (!year
+                    || !month
+                    || !day
+                    || isNaN(monthNumber)) {
+
+                return null;
+            }
+
+            return {
+                year: year,
+                month: month,
+                day: day,
+                monthNumber: monthNumber
+            };
+        }
+
+        /*
+         * releaseNotes가 배열이면 그대로 사용하고,
+         * 기존 문자열 형식도 호환되도록 배열로 변환한다.
+         */
+        function normalizeReleaseNotes(releaseNotes) {
+
+            if (Array.isArray(releaseNotes)) {
+                return releaseNotes;
+            }
+
+            if (typeof releaseNotes === "string"
+                    && releaseNotes.trim() !== "") {
+
+                return [releaseNotes];
+            }
+
+            return [];
+        }
+
+        function renderReleaseNotes(releaseNotes) {
+
+            var normalizedNotes =
+                    normalizeReleaseNotes(releaseNotes);
+
+            releaseNotesElement.innerHTML = "";
+
+            normalizedNotes.forEach(function (note) {
+
+                if (typeof note !== "string"
+                        || note.trim() === "") {
+
+                    return;
+                }
+
+                var listItem =
+                        document.createElement("li");
+
+                listItem.className =
+                        "release-note-item";
+
+                listItem.textContent =
+                        note.trim();
+
+                releaseNotesElement.appendChild(
+                        listItem
+                );
+            });
+
+            /*
+             * 내용이 없을 때 빈 영역이 남지 않게 처리
+             */
+            if (releaseNotesElement.children.length === 0) {
+
+                var defaultItem =
+                        document.createElement("li");
+
+                defaultItem.className =
+                        "release-note-item";
+
+                defaultItem.textContent =
+                        "업데이트 내용을 확인해 주세요.";
+
+                releaseNotesElement.appendChild(
+                        defaultItem
+                );
+            }
+        }
+
+        /*
+         * GitHub Pages 및 WebView 캐시 방지
+         */
+        fetch("./version.json?t=" + Date.now(), {
+            cache: "no-store"
+        })
+            .then(function (response) {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                            "version.json 조회 실패: "
+                            + response.status
+                    );
+                }
+
+                return response.json();
+            })
+            .then(function (data) {
+
+                var versionName =
+                        data.versionName || "-";
+
+                var apkUrl =
+                        data.apkUrl || "";
+
+                releaseMonthElement.textContent =
+                        formatReleaseMonth(
+                                data.releaseDate
+                        );
+
+                releaseDateElement.textContent =
+                        formatReleaseDate(
+                                data.releaseDate
+                        );
+
+                renderReleaseNotes(
+                        data.releaseNotes
+                );
+
+                /*
+                 * version.json의 versionName으로
+                 * 다운로드 버튼 문구 자동 생성
+                 */
+                downloadButton.textContent =
+                        "최신 버전 ("
+                        + versionName
+                        + ") 다운로드";
+
+                if (apkUrl !== "") {
+
+                    downloadButton.href =
+                            apkUrl;
+
+                    downloadButton.classList.remove(
+                            "disabled"
+                    );
+
+                    downloadButton.setAttribute(
+                            "aria-disabled",
+                            "false"
+                    );
+
+                } else {
+
+                    downloadButton.textContent =
+                            "다운로드 주소를 확인해 주세요";
+                }
+            })
+            .catch(function (error) {
+
+                console.error(error);
+
+                releaseMonthElement.textContent =
+                        "업데이트 정보 확인 실패";
+
+                releaseDateElement.textContent =
+                        "-";
+
+                renderReleaseNotes([]);
+
+                downloadButton.textContent =
+                        "업데이트 정보 확인 실패";
+
+                downloadButton.classList.add(
+                        "disabled"
+                );
+
+                downloadButton.setAttribute(
+                        "aria-disabled",
+                        "true"
+                );
+
+                errorMessageElement.style.display =
+                        "block";
+            });
+    })();
+
+    /*
+     * Android WebView에서 LoginDialog.java에 등록할
+     * JavaScriptInterface를 호출한다.
+     *
+     * Android.closeDialog()
+     * → 업데이트 AlertDialog만 닫기
+     * → 로그인 다이얼로그는 유지
+     */
+    function closeUpdateDialog() {
+
+        if (window.Android
+                && typeof window.Android.closeDialog
+                === "function") {
+
+            window.Android.closeDialog();
+            return;
+        }
+
+        /*
+         * GitHub Pages를 일반 브라우저로 확인할 때의 예비 처리.
+         * Android WebView에서는 위 closeDialog()가 실행된다.
+         */
+        if (window.history.length > 1) {
+            window.history.back();
+        }
+    }
+</script>
+
 </body>
 </html>
