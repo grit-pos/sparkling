@@ -181,32 +181,45 @@
         /* 릴리즈 노트 */
 
         .release-notes {
-            display: flex;
-            width: 100%;
-            margin: 0;
-            padding: 0;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 5.33px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5.33px;
 
-            list-style: none;
-        }
+    list-style: none;
+}
 
-        .release-note-item {
-            width: 100%;
-            margin: 0;
-            padding: 0;
+.release-note-item {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 0 18px;
 
-            color: #5A5C63;
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 27px;
+    color: #5A5C63;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
 
-            word-break: keep-all;
-            overflow-wrap: break-word;
-        }
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.release-note-item::before {
+    content: "•";
+    position: absolute;
+    top: 0;
+    left: 2px;
+
+    color: #5A5C63;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+}
 
         .release-divider {
             width: 100%;
